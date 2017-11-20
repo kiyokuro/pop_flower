@@ -8,6 +8,10 @@ class EventsController < ApplicationController
     @flowers = @event.flowers
   end
 
+  def update
+    binding.pry
+  end
+
   private
     def set_event
       @event = Event.find(params[:id])

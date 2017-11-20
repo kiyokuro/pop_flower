@@ -1,11 +1,22 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1><%= @event.title %></h1>
-    <ul class="flowers">
-      <% @flowers.each do |flower| %>
-      <li>
-        <%= "#{flower.name} #{flower.votes_num} votes" %>
-      </li>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h1><%= @event.title %></h1>
+      <%= form_for @event, url: { action: 'update' } do |f| %>
+        <ul class="flowers">
+          <div class="btn-group", data-toggle="buttons">
+            <% @flowers.each do |flower| %>
+            <label class="btn btn-secondary">
+              <li>
+                <%= radio_button_tag 'options', "#{flower.name}", checked = false, id: "option#{flower.name}" %>
+                <%= "#{flower.name} #{flower.votes_num} votes" %>
+              </li>
+            </label>
+            <% end %>
+          </div>
+        </ul>
+        <%= f.submit "Vote", class: "btn btn-primary" %>
       <% end %>
-3  </div>
+    </div>
+  </div>
 </div>
