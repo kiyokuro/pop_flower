@@ -3,19 +3,15 @@
     <div class="col-md-10">
       <h1><%= @event.title %></h1>
       <%= form_for @event, url: { action: 'update' } do |f| %>
-        <ul class="flowers">
-          <div class="btn-group", data-toggle="buttons">
-            <% @flowers.each do |flower| %>
+        <div class="btn-group", data-toggle="buttons">
+          <% @flowers.each do |flower| %>
             <label class="btn btn-secondary">
-              <li>
-                <%= radio_button_tag 'options', "#{flower.name}", checked = false, id: "option#{flower.name}" %>
-                <%= "#{flower.name} #{flower.votes_num} votes" %>
-              </li>
+              <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
+              <%= "#{flower.name} #{flower.votes_num} votes" %>
             </label>
-            <% end %>
-          </div>
-        </ul>
-        <%= f.submit "Vote", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <%= f.submit "Vote", class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
