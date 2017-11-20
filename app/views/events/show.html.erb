@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @event.title %></h1>
+    <ul class="flowers">
+      <% @flowers.each do |flower| %>
+      <li>
+        <%= "#{flower.name} #{flower.votes_num} votes" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
