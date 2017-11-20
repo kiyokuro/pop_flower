@@ -3,6 +3,7 @@ class Flower < ApplicationRecord
 
   # @flower.votes_upでvotes_numが１上昇します
   def votes_up
-    # self.
+    current_num = self.votes_num
+    self.update(votes_num: self.votes_num + 1)
   end
 end
