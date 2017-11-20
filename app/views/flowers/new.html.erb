@@ -1,2 +1,14 @@
-<h1>Flowers#new</h1>
-<p>Find me in app/views/flowers/new.html.erb</p>
+<!-- <h1>Flowers#new</h1>
+<p>Find me in app/views/flowers/new.html.erb</p> -->
+<h2>Flower</h2>
+<%= form_for :flower, url: events_flowers_path do |f| %>
+<p>
+  <%= f.text_field :name, placeholder: 'enter flower name' %>
+  <% if @flower.errors.messages[:title].any? %>
+  <span class="error"><%= @post.errors.messages[:title][0] %></span>
+  <% end %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
