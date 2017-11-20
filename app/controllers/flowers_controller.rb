@@ -1,18 +1,21 @@
 class FlowersController < ApplicationController
   def new
-    event = Event.find(params[:id])
     @flower = Flower.new
   end
 
   def create
-    @flower = event.flower.new(params[:flower])
+    event = Event.find(params[:event_id])
+    @flower = event.flowers.new(post_params)
     if @flower.save
-      redirect_to events_path
-      # notice[:success]
+      redirect_to event_path(event.id)
     else
       render 'new'
     end
   end
 
+private
+  def post_params
+    params.require(:flower).permit(:name)
+  end
 
 end
