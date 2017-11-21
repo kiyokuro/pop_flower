@@ -8,15 +8,16 @@ end
 
 events = Event.all
 
-flowers = ["バラ", "チューリップ", "カーネーション", "ゆり", "コチョウラン"]
-hanakotobas = ["「愛」「美」", "「思いやり」", "「無垢で深い愛」", "「純粋」「無垢」「威厳」", "「幸福が飛んでくる」「純粋な愛」"]
-flowers_images = []
+flowers = ["バラ", "チューリップ", "カーネーション"]
+hanakotobas = ["「愛」「美」", "「思いやり」", "「無垢で深い愛」"]
+flowers_images = ["chichinohi_rose_red", "flower_tulip", "carnation_hanataba"]
 
 events.each do |event|
   flowers.count.times do |n|
     Flower.create(name: flowers[n],
                   event_id: event.id,
                   hanakotoba: hanakotobas[n],
+                  image: flowers_images[n],
                   votes_num: 0)
   end
 end
