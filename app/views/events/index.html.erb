@@ -4,11 +4,11 @@
 <!-- Header -->
 <header class="masthead">
   <div class="container">
-    <%= image_tag "profile.png", class: "img-fluid" %>
+    <%= image_tag "flower_hanataba_bara_red.png", class: "img-fluid", :size => "300x300" %>
     <div class="intro-text">
       <span class="name">ポプラー(pop_flower)</span>
       <hr class="star-light">
-      <span class="skills">ポプラー(pop_flower)とは、</span>
+      <span class="skills">ポプラー(pop_flower)とは、大切な日に贈りたい花を投票するサイトです。</span>
     </div>
   </div>
 </header>
@@ -16,69 +16,22 @@
 <!-- Portfolio Grid Section -->
 <section id="portfolio">
   <div class="container">
-    <h2 class="text-center">Portfolio</h2>
+    <h2 class="text-center">大切な日</h2>
     <hr class="star-primary">
     <div class="row">
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
+      <% @event.each do | event | %>
+          <div class="col-sm-4 portfolio-item">
+            <p><%= event.title %></p>
+            <a class="portfolio-link" href="/events/<%= event.id %>">
+              <div class="caption">
+                <div class="caption-content">
+                  <i class="fa fa-search-plus fa-3x"></i>
+                </div>
+              </div>
+              <%= image_tag "event/#{event.image}.png", class: "img-fluid" %>
+            </a>
           </div>
-          <%= image_tag "portfolio/cabin.png", class: "img-fluid" %>
-        </a>
-      </div>
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <%= image_tag "portfolio/cake.png", class: "img-fluid" %>
-        </a>
-      </div>
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <%= image_tag "portfolio/circus.png", class: "img-fluid" %>
-        </a>
-      </div>
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <%= image_tag "portfolio/game.png", class: "img-fluid" %>
-        </a>
-      </div>
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal5" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <%= image_tag "portfolio/safe.png", class: "img-fluid" %>
-        </a>
-      </div>
-      <div class="col-sm-4 portfolio-item">
-        <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-          <div class="caption">
-            <div class="caption-content">
-              <i class="fa fa-search-plus fa-3x"></i>
-            </div>
-          </div>
-          <%= image_tag "portfolio/submarine.png", class: "img-fluid" %>
-        </a>
-      </div>
+      <% end %>
     </div>
   </div>
 </section>
