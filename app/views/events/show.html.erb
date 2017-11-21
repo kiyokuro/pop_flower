@@ -3,14 +3,14 @@
     <div class="col-md-10">
       <h1><%= @event.title %></h1>
       <%= form_for @event, url: { action: 'update' } do |f| %>
-        <div class="btn-group", data-toggle="buttons">
           <% @flowers.each do |flower| %>
+              <div class="btn-group", data-toggle="buttons">
             <label class="btn btn-secondary">
               <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
               <%= "#{flower.name} #{flower.votes_num} votes" %>
             </label>
+              </div>
           <% end %>
-        </div>
       <%= f.submit "Vote", class: "btn btn-primary" %>
       <% end %>
     </div>
