@@ -8,7 +8,7 @@ class FlowersController < ApplicationController
  
   def create
     event = Event.find(params[:event_id])
-    @flower = event.flowers.new(post_params)
+    @flower = event.flowers.new(post_params.merge({votes_num: 0}))
     if @flower.save
       redirect_to event_path(event.id)
     else
@@ -25,7 +25,7 @@ class FlowersController < ApplicationController
 
 private
   def post_params
-    params.require(:flower).permit(:name)
+    params.require(:flower).permit(:name,)
   end
   
   def set_flower
