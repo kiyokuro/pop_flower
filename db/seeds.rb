@@ -10,7 +10,7 @@ events = Event.all
 flowers = ["チューリップ", "バラ", "ひまわり", "ゆり", "ラン", "カーネーション"]
 events.each do |event|
   flowers.count.times do |n|
-    Flower.first_or_create(name: flowers[n],
+    Flower.create(name: flowers[n],
                   event_id: event.id,
                   votes_num: 0)
   end
