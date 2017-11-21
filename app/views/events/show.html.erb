@@ -1,18 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-10">
-      <h1><%= @event.title %></h1>
-      <%= form_for @event, url: { action: 'update' } do |f| %>
-        <div class="btn-group", data-toggle="buttons">
-          <% @flowers.each do |flower| %>
-            <label class="btn btn-secondary">
-              <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
-              <%= "#{flower.name} #{flower.votes_num} votes" %>
-            </label>
-          <% end %>
-        </div>
-      <%= f.submit "Vote", class: "btn btn-primary" %>
-      <% end %>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="/">ポプラー(pop_flower)</a>
+    <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+      <!--Menu-->
+      <!--<i class="fa fa-bars"></i>-->
+    <!--</button>-->
+    <!--<div class="collapse navbar-collapse" id="navbarResponsive">-->
+      <!--<ul class="navbar-nav ml-auto">-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link js-scroll-trigger" href="#portfolio">大切な日</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link js-scroll-trigger" href="#about">About</a>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+        <!--</li>-->
+      <!--</ul>-->
+    <!--</div>-->
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10">
+        <h1><%= @event.title %></h1>
+        <%= image_tag "event/#{@event.image}.png", class: "img-fluid" %>
+        <%= form_for @event, url: {action: 'update'} do |f| %>
+            <% @flowers.each do |flower| %>
+                <div class="btn-group" , data-toggle="buttons">
+                  <label class="btn btn-secondary">
+                    <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
+                    <%= "#{flower.name} #{flower.votes_num} 票" %>
+                  </label>
+                </div>
+            <% end %>
+            <%= f.submit "投票", class: "btn btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+</header>
