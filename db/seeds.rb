@@ -1,17 +1,17 @@
 # event
-Event.create(title: "誕生日")
-Event.create(title: "母の日")
-Event.create(title: "父の日")
-Event.create(title: "クリスマス")
-Event.create(title: "結婚記念日")
+events = ["誕生日", "母の日", "父の日", "クリスマス", "結婚記念日", "敬老の日", "クリスマス", "お正月",
+  "バレンタインデー", "ホワイトデー", "ひな祭り", "出産祝い", "結婚祝い", "内祝い", "引っ越し祝い", "新築祝い"]
+events.count.times do |n|
+  Event.create(title: events[n])
+end
 
-events = Event.all[0..4]
+events = Event.all
 
-flowers = ["チューリップ", "バラ", "ひまわり"]
+flowers = ["チューリップ", "バラ", "ひまわり", "ゆり", "ラン", "カーネーション"]
 events.each do |event|
-  3.times do |n|
-    Flower.create(name: flowers[n],
+  flowers.count.times do |n|
+    Flower.first_or_create(name: flowers[n],
                   event_id: event.id,
-                  votes_num: n)
+                  votes_num: 0)
   end
 end
