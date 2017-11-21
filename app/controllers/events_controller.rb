@@ -1,11 +1,18 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [:show, :update]
 
   def index
   end
 
   def show
     @flowers = @event.flowers
+  end
+
+  def update
+    return false unless params[:options]
+    @flower = Flower.find(params[:options])
+    @flower.votes_up
+    redirect_to @event
   end
 
   private
