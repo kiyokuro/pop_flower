@@ -1,8 +1,9 @@
 # event
-events = ["誕生日", "母の日", "父の日", "クリスマス", "結婚記念日", "敬老の日", "クリスマス", "お正月",
-  "バレンタインデー", "ホワイトデー", "ひな祭り", "出産祝い", "結婚祝い", "内祝い", "引っ越し祝い", "新築祝い"]
+events = ["誕生日", "母の日", "父の日", "クリスマス", "結婚記念日", "敬老の日", "お正月", "ひな祭り"]
+images = ["birthday_animal", "hahanohi_present", "chichinohi_present_oyako_white", "flower_xmas", "wedding_couple", "keirou_couple_flower2", "osyougatsu_hanataba", "hinamatsuri_title"]
+
 events.count.times do |n|
-  Event.create(title: events[n])
+  Event.create(title: events[n], image: images[n])
 end
 
 events = Event.all

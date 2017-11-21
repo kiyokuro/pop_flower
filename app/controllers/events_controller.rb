@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update]
 
   def index
+    @event = Event.all
+    # binding.pry
   end
 
   def show
