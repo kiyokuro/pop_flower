@@ -34,14 +34,14 @@
         <div class="row">
           <% @flowers.each do |flower| %>
               <div class="col-sm-6 portfolio-item" , data-toggle="buttons">
-                <p><%= "#{flower.votes_num} 票"%></p>
                 <p><%= "#{flower.hanakotoba} "%></p>
                 <% if flower.image %>
                     <%= image_tag "flowers/#{flower.image}.png", class: "img-fluid" , :size => "200x200"%>
                 <% end %>
-                <label class="btn btn-secondary">
+                <label class="btn btn-secondary btn-block">
                   <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
                   <p><%= "#{flower.name}" %></p>
+                  <p><%= "#{flower.votes_num} 票"%></p>
                 </label>
               </div>
           <% end %>
