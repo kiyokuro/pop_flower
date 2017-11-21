@@ -1,49 +1,51 @@
 <head>
-  <%=stylesheet_link_tag "flowers_application", media: "all", 'data-turbolinks-track': 'reload'%>
+  <%= stylesheet_link_tag "flowers_application", media: "all", 'data-turbolinks-track': 'reload' %>
 </head>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="/">ポプラー(pop_flower)</a>
     <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
-      <!--Menu-->
-      <!--<i class="fa fa-bars"></i>-->
+    <!--Menu-->
+    <!--<i class="fa fa-bars"></i>-->
     <!--</button>-->
     <!--<div class="collapse navbar-collapse" id="navbarResponsive">-->
-      <!--<ul class="navbar-nav ml-auto">-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link js-scroll-trigger" href="#portfolio">大切な日</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link js-scroll-trigger" href="#about">About</a>-->
-        <!--</li>-->
-        <!--<li class="nav-item">-->
-          <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
-        <!--</li>-->
-      <!--</ul>-->
+    <!--<ul class="navbar-nav ml-auto">-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link js-scroll-trigger" href="#portfolio">大切な日</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link js-scroll-trigger" href="#about">About</a>-->
+    <!--</li>-->
+    <!--<li class="nav-item">-->
+    <!--<a class="nav-link js-scroll-trigger" href="#contact">Contact</a>-->
+    <!--</li>-->
+    <!--</ul>-->
     <!--</div>-->
   </div>
 </nav>
 
 <header class="masthead">
   <div class="container">
-    <div class="row">
-      <div class="col-md-10">
-        <h1><%= @event.title %></h1>
-        <%= image_tag "event/#{@event.image}.png", class: "img-fluid" %>
-        <%= form_for @event, url: {action: 'update'} do |f| %>
-            <% @flowers.each do |flower| %>
-                <div class="btn-group" , data-toggle="buttons">
-                  <label class="btn btn-secondary">
-                    <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
-                    <%= "#{flower.name} #{flower.votes_num} 票" %>
-                  </label>
-                </div>
-            <% end %>
-            <%= f.submit "投票", class: "btn btn-primary" %>
-        <% end %>
-        <%=link_to "渡した花がないので追加する", new_event_flower_path(event_id: params[:id]), class: "flower__add_new_flower"%>
-      </div>
-    </div>
+    <h1><%= @event.title %></h1>
+    <%= image_tag "event/#{@event.image}.png", class: "img-fluid" %>
+
+    <%= form_for @event, url: {action: 'update'} do |f| %>
+        <div class="row">
+          <% @flowers.each do |flower| %>
+              <div class="col-sm-4 portfolio-item" , data-toggle="buttons">
+                <p><%= "#{flower.name} #{flower.votes_num} 票" %></p>
+                <p><%= "#{flower.hanakotoba} "%></p>
+                <label class="btn btn-secondary">
+                  <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
+                  <%= image_tag "flowers/#{flower.image}.png", class: "img-fluid" , :size => "100x100"%>
+                </label>
+              </div>
+          <% end %>
+        </div>
+        <%= f.submit "投票", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to "渡した花がないので追加する", new_event_flower_path(event_id: params[:id]), class: "flower__add_new_flower" %>
   </div>
 </header>
