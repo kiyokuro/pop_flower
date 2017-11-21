@@ -1,3 +1,6 @@
+<head>
+  <%=stylesheet_link_tag "flowers_application", media: "all", 'data-turbolinks-track': 'reload'%>
+</head>
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
@@ -39,6 +42,7 @@
             <% end %>
             <%= f.submit "投票", class: "btn btn-primary" %>
         <% end %>
+        <%=link_to "渡した花がないので追加する", new_event_flower_path(event_id: params[:id]), class: "flower__add_new_flower"%>
       </div>
     </div>
   </div>
