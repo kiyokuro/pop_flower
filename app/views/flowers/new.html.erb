@@ -1,14 +1,26 @@
-<!-- <h1>Flowers#new</h1>
-<p>Find me in app/views/flowers/new.html.erb</p> -->
-<h2>Flower</h2>
-<%= form_for :flower, url: event_flowers_path do |f| %>
-<p>
-  <%= f.text_field :name, placeholder: 'enter flower name' %>
-  <% if @flower.errors.messages[:title].any? %>
-  <span class="error"><%= @post.errors.messages[:title][0] %></span>
-  <% end %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
+<head>
+  <%=stylesheet_link_tag "flowers_application", media: "all", 'data-turbolinks-track': 'reload'%>
+</head>
+<!-- Navigation -->
+<%= render 'layouts/navbar' %>
+
+<section id="portfolio">
+  <div class="container">
+    <h2 class="text-center flower__title">新しい花の登録</h2>
+    <%= form_for :flower, url: event_flowers_path do |f| %>
+      <p>
+        <%= f.label "追加する花"%>
+          <%= f.text_field :name, placeholder: 'enter flower name', class: "form-control" %>
+            <% if @flower.errors.messages[:title].any? %>
+              <span class="error">
+                <%= @post.errors.messages[:title][0] %>
+              </span>
+              <% end %>
+      </p>
+      <p>
+        <%= f.submit "登録", class: "btn btn-primary btn-lg btn-block", style:"margin-top: 40px" %>
+      </p>
+      <% end %>
+  </div>
+</section>
+
