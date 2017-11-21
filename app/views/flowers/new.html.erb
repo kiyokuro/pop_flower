@@ -7,6 +7,20 @@
 <section id="portfolio">
   <div class="container">
     <h2 class="text-center flower__title">新しい花の登録</h2>
+    <% if @flower.errors.any? %>
+      <div id="error_explanation">
+        <div class="alert alert-danger">
+          <%= pluralize(@flower.errors.count, "error") %>.
+        </div>
+        <ul>
+          <% @flower.errors.full_messages.each do |msg| %>
+            <li>
+              <%= msg %>
+            </li>
+            <% end %>
+        </ul>
+      </div>
+    <% end %>
     <%= form_for :flower, url: event_flowers_path do |f| %>
       <p>
         <%= f.label "追加する花"%>
