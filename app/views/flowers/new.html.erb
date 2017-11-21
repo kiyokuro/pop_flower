@@ -4,7 +4,7 @@
 <!-- Navigation -->
 <%= render 'layouts/navbar' %>
 
-<section id="portfolio">
+<section id="portfolio", class="flower-outside-block">
   <div class="container">
     <h2 class="text-center flower__title">新しい花の登録</h2>
     <% if @flower.errors.any? %>
@@ -23,7 +23,7 @@
     <% end %>
     <%= form_for :flower, url: event_flowers_path do |f| %>
       <p>
-        <%= f.label "追加する花"%>
+        <%= f.label "追加する花", class: "flower__form-label"%>
           <%= f.text_field :name, placeholder: 'enter flower name', class: "form-control" %>
             <% if @flower.errors.messages[:title].any? %>
               <span class="error">
