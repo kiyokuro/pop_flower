@@ -33,12 +33,15 @@
     <%= form_for @event, url: {action: 'update'} do |f| %>
         <div class="row">
           <% @flowers.each do |flower| %>
-              <div class="col-sm-4 portfolio-item" , data-toggle="buttons">
-                <p><%= "#{flower.name} #{flower.votes_num} 票" %></p>
+              <div class="col-sm-6 portfolio-item" , data-toggle="buttons">
+                <p><%= "#{flower.votes_num} 票"%></p>
                 <p><%= "#{flower.hanakotoba} "%></p>
+                <% if flower.image %>
+                    <%= image_tag "flowers/#{flower.image}.png", class: "img-fluid" , :size => "200x200"%>
+                <% end %>
                 <label class="btn btn-secondary">
                   <%= radio_button_tag 'options', "#{flower.id}", checked = false, id: "option#{flower.name}" %>
-                  <%= image_tag "flowers/#{flower.image}.png", class: "img-fluid" , :size => "100x100"%>
+                  <p><%= "#{flower.name}" %></p>
                 </label>
               </div>
           <% end %>
